@@ -28,9 +28,11 @@
                 <label for="category" class="block text-sm font-medium text-gray-600">Category</label>
                 <select name="category" id="category" class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300">      
                      <option value="">Select an option</option>
-                        @foreach($options as $key => $value)
-                             <option value="{{ $value }}">{{ $value }} </option>
+                     @foreach($options as $option)
+                        <option value="{{  $option->name }}">{{ $option->name }}</option>
+                
                         @endforeach
+                        
                 </select>
    
             </div>

@@ -33,9 +33,9 @@ class HisabController extends Controller
     {
         if (Auth::check()) {
             
-            $options = Category::pluck('name', 'id');
+        // $options = Category::pluck('name', 'id');
            
-           
+           $options = Category::select('id', 'name', 'type')->get();
            
             return view('hisabs.create', compact('options') );
         }
@@ -48,10 +48,24 @@ class HisabController extends Controller
      */
     public function store(Request $request)
     {
+      
+
+        $cat = Category::where('name', $request['category'])->first();
+        
+        // Ensure the category exists
+        if (!$cat) {
+            return redirect()->back()->withInput()->withErrors(['category' => 'Invalid category']);
+        }
+    
+        // Fetch the type from the retrieved category
+        //$category_type = $cat->type;
+
         $data = $request->validate([
             'category' => 'required',
             'amount' => 'required',
+            // 'category_type' => 'required',
         ]);
+        $data['category_type'] = $cat->type;
         
         $newHisab = hisab::create($data);
         return redirect(route('hisab.index'))->with('success', 'hisab created successfully');

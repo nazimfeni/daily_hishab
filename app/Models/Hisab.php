@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Hisab extends Model
 {
     use HasFactory;
-    protected $fillable = ['category', 'amount'];
+    protected $fillable = ['category', 'amount','category_type'];
 }

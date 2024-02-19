@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('hisabs', function (Blueprint $table) {
             $table->id();
             $table->string('category');
+            $table->string('category_type');
             $table->decimal('amount', 10, 2); // New field
             $table->timestamps();
         });

@@ -32,6 +32,7 @@
                         <th class="p-2 ">Date</th>
                         <th class="p-2 ">Category</th>
                         <th class="p-2 ">Amount</th>
+                        <th class="p-2 ">Type</th>
                         <th class="p-2">Edit</th>
                        
                     </tr>
@@ -43,6 +44,7 @@
                             <td class="p-2">{{ $hisab->created_at->format('d-M-y') }}</td>
                             <td class="p-2 ">{{ $hisab->category }}</td>
                             <td class="p-2 ">{{ $hisab->amount }}</td>
+                            <td class="p-2 ">{{ $hisab->category_type }}</td>
                             <td class="p-2 ">
                             <a href="{{ route('hisab.edit', ['hisab' => $hisab->id]) }}" class="bg-blue-500 text-white py-2 px-4 rounded">Edit</a>
                             </td>
